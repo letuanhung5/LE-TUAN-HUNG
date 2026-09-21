@@ -1,0 +1,38 @@
+-- 1. Tạo cơ sở dữ liệu QuanLyBanHang
+CREATE DATABASE QuanLyBanHang;
+
+-- 2. Chọn cơ sở dữ liệu QuanLyBanHang để làm việc
+USE QuanLyBanHang;
+
+-- 3. Tạo bảng Customer (Khách hàng)
+CREATE TABLE Customer (
+    cID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    cName VARCHAR(50) NOT NULL,
+    cAge TINYINT
+);
+
+-- 4. Tạo bảng Order (Hóa đơn)
+CREATE TABLE `Order` (
+    oID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    cID INT NOT NULL,
+    oDate DATETIME NOT NULL,
+    oTotalPrice INT,
+    FOREIGN KEY (cID) REFERENCES Customer(cID)
+);
+
+-- 5. Tạo bảng Product (Sản phẩm)
+CREATE TABLE Product (
+    pID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    pName VARCHAR(50) NOT NULL,
+    pPrice INT NOT NULL CHECK (pPrice >= 0)
+);
+
+-- 6. Tạo bảng OrderDetail (Chi tiết hóa đơn - Bảng trung gian liên kết Order và Product)
+CREATE TABLE OrderDetail (
+    oID INT NOT NULL,
+    pID INT NOT NULL,
+    odQTY INT NOT NULL CHECK (odQTY > 0),
+    PRIMARY KEY (oID, pID),
+    FOREIGN KEY (oID) REFERENCES `Order`(oID),
+    FOREIGN KEY (pID) REFERENCES Product(pID)
+);
