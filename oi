@@ -1,0 +1,22 @@
+-- Chuyển sang cơ sở dữ liệu classicmodels
+USE classicmodels;
+
+-- 1. Kiểm tra hiệu năng tìm kiếm trước khi tạo index cho customerName
+-- MySQL sẽ thực hiện quét toàn bộ bảng (type = ALL)
+EXPLAIN SELECT * FROM customers WHERE customerName = 'Land of Toys Inc.';
+
+-- 2. Tạo chỉ mục đơn (Single-column Index) cho cột customerName
+ALTER TABLE customers ADD INDEX idx_customerName(customerName);
+
+-- 3. Kiểm tra lại hiệu năng sau khi đã tạo index
+-- Kết quả sẽ hiển thị key = idx_customerName và số hàng (rows) cần tìm giảm đáng kể
+EXPLAIN SELECT * FROM customers WHERE customerName = 'Land of Toys Inc.';
+
+-- 4. Tạo chỉ mục phức hợp (Composite Index) trên 2 cột contactFirstName và contactLastName
+ALTER TABLE customers ADD INDEX idx_full_name(contactFirstName, contactLastName);
+
+-- 5. Kiểm tra hiệu năng truy vấn sử dụng chỉ mục phức hợp
+EXPLAIN SELECT * FROM customers WHERE contactFirstName = 'Jean' OR contactFirstName = 'King';
+
+-- 6. Xóa chỉ mục phức hợp khi không còn sử dụng
+ALTER TABLE customers DROP INDEX idx_full_name;
