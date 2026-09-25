@@ -1,0 +1,55 @@
+/* Style external áp dụng cho thẻ p có class "external-text" */
+.external-text {
+    color: #2e7d32; /* Màu xanh lá */
+    font-size: 16px;
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhúng CSS vào trang HTML</title>
+
+    <!-- PHẦN 3: External Style (Liên kết tới file CSS bên ngoài) -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- PHẦN 2: Internal Style (Viết CSS trực tiếp trong thẻ <style>) -->
+    <style>
+        /* Định dạng màu sắc cho tiêu đề h1 */
+        h1 {
+            color: #1976d2; /* Màu xanh dương */
+            font-family: Arial, sans-serif;
+        }
+
+        /* Định dạng màu sắc cho đoạn văn phần 2 */
+        .internal-text {
+            color: #d32f2f; /* Màu đỏ */
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Bài tập Nhúng CSS vào HTML</h1>
+
+    <!-- PHẦN 1: Inline Style (Viết CSS trực tiếp trong thuộc tính style của thẻ) -->
+    <h2>1. Inline Style</h2>
+    <p style="color: #ed6c02; font-size: 16px; font-weight: bold;">
+        Đoạn văn này được thay đổi màu sắc bằng Inline Style (màu cam).
+    </p>
+
+    <!-- PHẦN 2: Internal Style -->
+    <h2>2. Internal Style</h2>
+    <p class="internal-text">
+        Đoạn văn này được thay đổi màu sắc bằng Internal Style (màu đỏ).
+    </p>
+
+    <!-- PHẦN 3: External Style -->
+    <h2>3. External Style</h2>
+    <p class="external-text">
+        Đoạn văn này được thay đổi màu sắc bằng External Style từ file style.css (màu xanh lá).
+    </p>
+
+</body>
+</html>
