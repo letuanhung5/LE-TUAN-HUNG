@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tạo Menu Ngang Dropdown</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div id="menu">
+        <ul>
+            <li>
+                <a href="#">Sem 1</a>
+                <ul>
+                    <li><a href="#">Computing Fundamental</a></li>
+                    <li><a href="#">C Programming</a></li>
+                    <li><a href="#">Building Dynamic Website</a></li>
+                    <li><a href="#">MS Transact-SQL</a></li>
+                    <li><a href="#">Project</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Sem 2</a>
+                <ul>
+                    <li><a href="#">Cloud Computing</a></li>
+                    <li><a href="#">APJ - I</a></li>
+                    <li><a href="#">APJ - II</a></li>
+                    <li><a href="#">APJ - III</a></li>
+                    <li><a href="#">eProject</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Sem 3</a></li>
+            <li><a href="#">Sem 4</a></li>
+        </ul>
+    </div>
+
+</body>
+</html>
+
+
+/* Font chữ chung */
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Khung chứa menu ngang */
+#menu {
+    height: 30px;
+    padding: 0;
+    margin: 0;
+    background-color: #000000;
+    border: 1px solid #CDCDCD;
+}
+
+/* Reset margin và padding cho danh sách */
+#menu ul, #menu li {
+    padding: 0;
+    margin: 0;
+}
+
+/* Dàn hàng ngang cho các mục menu chính */
+#menu li {
+    position: relative;
+    float: left;            /* Giúp các thẻ <li> nằm trên cùng một hàng ngang */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Kiểu dáng các đường link menu chính */
+#menu li a {
+    width: 100px;
+    height: 30px;
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    line-height: 30px;
+    background-color: black;
+    color: white;
+}
+
+/* Điều chỉnh độ rộng và căn lề riêng cho menu con */
+#menu ul ul li a {
+    width: 200px;
+    text-align: left;
+    padding-left: 10px;
+}
+
+/* Hiệu ứng hover đổi màu nền */
+#menu li a:hover {
+    background-color: red;
+}
+
+/* Định vị và ẩn menu con (Dropdown) */
+#menu ul ul {
+    position: absolute;    /* Định vị menu con xổ xuống từ vị trí của thẻ li cha */
+    top: 30px;             /* Đẩy xuống ngay dưới thanh menu chính (bằng height của thẻ li cha) */
+    left: 0;               /* Căn sát lề trái của phần tử cha */
+    visibility: hidden;    /* Mặc định ẩn menu con */
+}
+
+/* Hiển thị menu con khi di chuột vào mục cha */
+#menu ul li:hover ul {
+    visibility: visible;
+}
