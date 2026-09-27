@@ -1,0 +1,131 @@
+/* Reset CSS cơ bản */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f6f8;
+    color: #333;
+    padding: 20px;
+}
+
+/* Khung chứa tổng */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Các khối giao diện chung */
+header, nav, .main-content, footer {
+    width: 100%;
+}
+
+header {
+    background-color: #1a237e;
+    color: #ffffff;
+    text-align: center;
+    padding: 30px 20px;
+    border-radius: 6px;
+}
+
+nav {
+    background-color: #283593;
+    border-radius: 6px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+nav ul li a {
+    display: block;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 20px;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    background-color: #3f51b5;
+    border-radius: 4px;
+}
+
+/* BỐ CỤC NỘI DUNG CHÍNH (3 CỘT TRÊN DESKTOP) */
+.main-content {
+    display: flex;
+    gap: 15px;
+}
+
+.left-sidebar, .right-sidebar {
+    flex: 1; /* Chiếm 1 phần */
+    background-color: #e8eaf6;
+    padding: 20px;
+    border-radius: 6px;
+}
+
+.content-body {
+    flex: 2; /* Chiếm 2 phần (rộng gấp đôi) */
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+footer {
+    background-color: #1a237e;
+    color: #ffffff;
+    text-align: center;
+    padding: 15px;
+    border-radius: 6px;
+}
+
+/* ==========================================
+   2. MEDIA QUERIES HOÀN THIỆN RESPONSIVE (RWD)
+   ========================================== */
+
+/* Màn hình Tablet (Độ rộng dưới 992px) */
+@media screen and max-width 992px {
+    .main-content {
+        flex-wrap: wrap; /* Cho phép các cột rớt dòng */
+    }
+
+    .content-body {
+        flex: 100%; /* Bài viết chính lên hàng đầu chiếm 100% độ rộng */
+        order: 1;
+    }
+
+    .left-sidebar {
+        flex: 50%; /* Sidebar trái chiếm nửa màn hình */
+        order: 2;
+    }
+
+    .right-sidebar {
+        flex: 50%; /* Sidebar phải chiếm nửa màn hình */
+        order: 3;
+    }
+}
+
+/* Màn hình Mobile (Độ rộng dưới 600px) */
+@media screen and max-width 600px {
+    nav ul {
+        flex-direction: column; /* Menu xếp dọc trên điện thoại */
+        text-align: center;
+    }
+
+    .main-content {
+        flex-direction: column; /* Tất cả các khối xếp thành 1 cột duy nhất */
+    }
+
+    .left-sidebar, .right-sidebar, .content-body {
+        width: 100%;
+    }
+}
