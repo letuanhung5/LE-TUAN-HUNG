@@ -1,0 +1,210 @@
+/* Reset CSS cơ bản */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #f0f2f5;
+    color: #050505;
+}
+
+/* 1. FIXED HEADER (Thanh điều hướng cố định ở trên cùng) */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 56px;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Luôn nổi trên các phần tử khác */
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo {
+    color: #1877f2;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.search-box input {
+    background-color: #f0f2f5;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 50px;
+    outline: none;
+    width: 220px;
+}
+
+.header-center {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-icon {
+    font-size: 20px;
+    color: #65676b;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.nav-icon.active {
+    color: #1877f2;
+    border-bottom: 3px solid #1877f2;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+}
+
+.avatar-sm {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #ccc;
+}
+
+/* KHUNG CHỨA BỐ CỤC CHÍNH (MAIN CONTAINER) */
+.main-container {
+    display: flex;
+    margin-top: 56px; /* Bù khoảng trống cho Fixed Header */
+    height: calc(100vh - 56px);
+}
+
+/* 2. SIDEBAR TRÁI & PHẢI (Cố định cuộn độc lập) */
+.sidebar {
+    width: 280px;
+    padding: 16px;
+    position: fixed;
+    top: 56px;
+    bottom: 0;
+    overflow-y: auto;
+}
+
+.sidebar-left {
+    left: 0;
+}
+
+.sidebar-right {
+    right: 0;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.menu-item:hover {
+    background-color: #e4e6eb;
+}
+
+.section-title {
+    color: #65676b;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 15px 0 10px 0;
+}
+
+/* 3. NỘI DUNG CHÍNH (MAIN FEED Ở GIỮA) */
+.feed-content {
+    flex: 1;
+    margin-left: 280px;  /* Bù chiều rộng cho Sidebar trái */
+    margin-right: 280px; /* Bù chiều rộng cho Sidebar phải */
+    padding: 20px;
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Khung tạo bài viết mới */
+.create-post {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 12px 16px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.post-input {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.post-input input {
+    flex: 1;
+    background-color: #f0f2f5;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 50px;
+    outline: none;
+}
+
+/* Các bài đăng (Posts) */
+.post {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.post-author {
+    font-weight: bold;
+}
+
+.post-time {
+    font-size: 12px;
+    color: #65676b;
+}
+
+.post-text {
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+.post-image {
+    width: 100%;
+    height: 300px;
+    background-color: #e4e6eb;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #65676b;
+}
