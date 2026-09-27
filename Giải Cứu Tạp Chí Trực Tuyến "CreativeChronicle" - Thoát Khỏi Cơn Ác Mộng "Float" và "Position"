@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CreativeChronicle - Article Detail</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* ==========================================
+           1. AUTHOR SECTION - FLEXBOX IMPLEMENTATION
+           ========================================== */
+        .author-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #dee2e6;
+            margin-bottom: 1.5rem;
+        }
+
+        .author-info-group {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            background-color: #e9ecef;
+        }
+
+        /* ==========================================
+           2. MOSAIC GALLERY - CSS GRID IMPLEMENTATION
+           ========================================== */
+        .mosaic-gallery {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            grid-auto-rows: 200px;
+            gap: 15px;
+            margin-bottom: 2rem;
+        }
+
+        .gallery-item {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        /* Ảnh chính chiếm 2 hàng trong Grid */
+        .photo-main {
+            grid-row: span 2;
+        }
+
+        /* Responsive cho Mobile */
+        @media (max-width: 576px) {
+            .mosaic-gallery {
+                grid-template-columns: 1fr;
+                grid-auto-rows: 250px;
+            }
+            .photo-main {
+                grid-row: span 1;
+            }
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+    <div class="container my-5 bg-white p-4 p-md-5 rounded shadow-sm">
+        
+        <!-- VÙNG 1: AUTHOR INFO (Tận dụng Flexbox + Bootstrap Utilities) -->
+        <header class="author-section">
+            <div class="author-info-group">
+                <img src="https://picsum.photos/100/100?random=1" alt="Jane Doe" class="author-avatar">
+                <div>
+                    <h5 class="mb-0 fw-bold">Jane Doe</h5>
+                    <small class="text-muted">Published on Oct 25, 2026</small>
+                </div>
+            </div>
+            <div class="share-buttons d-flex gap-2">
+                <button class="btn btn-outline-primary btn-sm">Share Facebook</button>
+                <button class="btn btn-outline-info btn-sm">Tweet</button>
+            </div>
+        </header>
+
+        <!-- VÙNG 2: MOSAIC GALLERY (CSS Grid 2D) -->
+        <section class="mosaic-gallery">
+            <img src="https://picsum.photos/800/600?random=10" alt="Main Photo" class="gallery-item photo-main">
+            <img src="https://picsum.photos/400/300?random=11" alt="Sub Photo 1" class="gallery-item photo-sub">
+            <img src="https://picsum.photos/400/300?random=12" alt="Sub Photo 2" class="gallery-item photo-sub">
+        </section>
+
+        <!-- NỘI DUNG BÀI VIẾT -->
+        <article class="article-content mb-5">
+            <p class="lead">
+                Đây là nội dung bài báo. Nhờ sử dụng CSS Grid, khoảng cách giữa Gallery và đoạn văn bản này hoàn toàn linh hoạt. 
+                Khi Gallery co róp trên thiết bị di động, phần chữ sẽ tự động trôi xuống bên dưới mà không bị đè che mất nội dung.
+            </p>
+        </article>
+
+        <!-- VÙNG 3: RECOMMENDED ARTICLES (Bootstrap Grid 12 Columns) -->
+        <section class="recommended-section">
+            <h3 class="mb-4 fw-bold">Recommended Articles</h3>
+            <div class="row g-4">
+                
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <img src="https://picsum.photos/300/200?random=21" class="card-img-top" alt="Article 1">
+                        <div class="card-body">
+                            <h5 class="card-title h6 fw-bold">Art & Technology in 2026</h5>
+                            <p class="card-text text-muted small">Exploring how new visual tools change digital art.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <img src="https://picsum.photos/300/200?random=22" class="card-img-top" alt="Article 2">
+                        <div class="card-body">
+                            <h5 class="card-title h6 fw-bold">The Renaissance of CSS</h5>
+                            <p class="card-text text-muted small">Why modern layout techniques matter more than ever.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <img src="https://picsum.photos/300/200?random=23" class="card-img-top" alt="Article 3">
+                        <div class="card-body">
+                            <h5 class="card-title h6 fw-bold">Responsive Design Rules</h5>
+                            <p class="card-text text-muted small">How to build flawless layouts across modern screens.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <img src="https://picsum.photos/300/200?random=24" class="card-img-top" alt="Article 4">
+                        <div class="card-body">
+                            <h5 class="card-title h6 fw-bold">UI/UX Design Trends</h5>
+                            <p class="card-text text-muted small">Minimalist, functional, and content-first web designs.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
