@@ -1,0 +1,69 @@
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.codegym.model.Customer" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%-- Taglib cho Tomcat 10+ (Jakarta EE) --%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách khách hàng</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f6f9; padding: 40px; }
+        .container { max-width: 900px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        h2 { text-align: center; color: #1b2a7a; margin-bottom: 25px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #ddd; vertical-align: middle; }
+        th { background-color: #1b2a7a; color: white; text-transform: uppercase; font-size: 14px; }
+        tr:hover { background-color: #f1f5f9; }
+        .avatar { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid #1b2a7a; }
+    </style>
+</head>
+<body>
+
+<%
+    // Khởi tạo danh sách khách hàng giả lập dữ liệu
+    List<Customer> customerList = new ArrayList<>();
+    customerList.add(new Customer("Mai Văn Hoàn", "1983-08-20", "Hà Nội", "https://picsum.photos/id/1005/100/100"));
+    customerList.add(new Customer("Nguyễn Văn Nam", "1983-08-21", "Bắc Giang", "https://picsum.photos/id/1012/100/100"));
+    customerList.add(new Customer("Nguyễn Thái Trãi", "1983-08-22", "Nam Định", "https://picsum.photos/id/1025/100/100"));
+    customerList.add(new Customer("Trần Đăng Khoa", "1983-08-17", "Hà Tây", "https://picsum.photos/id/1062/100/100"));
+    customerList.add(new Customer("Nguyễn Đình Chiểu", "1983-08-19", "Hà Nội", "https://picsum.photos/id/1074/100/100"));
+
+    // Đưa danh sách vào Page Context để JSTL (EL Expression) có thể truy cập
+    pageContext.setAttribute("customers", customerList);
+%>
+
+<div class="container">
+    <h2>DANH SÁCH KHÁCH HÀNG</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Tên khách hàng</th>
+                <th>Ngày sinh</th>
+                <th>Địa chỉ</th>
+                <th>Ảnh đại diện</th>
+            </tr>
+        </thead>
+        <tbody>
+            <%-- Sử dụng thẻ c:forEach của JSTL để duyệt danh sách --%>
+            <c:forEach var="customer" items="${pageScope.customers}" varStatus="loop">
+                <tr>
+                    <td>${loop.count}</td>
+                    <td><b>${customer.name}</b></td>
+                    <td>${customer.dob}</td>
+                    <td>${customer.address}</td>
+                    <td>
+                        <img src="${customer.image}" alt="${customer.name}" class="avatar" />
+                    </td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
